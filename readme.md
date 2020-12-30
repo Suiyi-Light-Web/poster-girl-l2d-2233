@@ -5,6 +5,9 @@
 
 请注意，考虑到用户访问体验，我们移除了移动端加载。如果有此需求，请下载旧版本或自己修改实现。
 
+## 修改说明
+对[Argon](https://github.com/solstice23/argon-theme)适配
+
 ## 使用方法
 1. Star 本项目
 
