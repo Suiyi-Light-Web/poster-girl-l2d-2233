@@ -1,5 +1,5 @@
 //初始位置，默认左上角，与下面的 目标位置 搭配修改
-$(".waifu").css({'top':0,'left':0});
+$(".waifu").css({'top':0,'left':30});
 
 let waifu_display = localStorage.getItem('waifu-display');
 if(waifu_display=="none"){
@@ -29,7 +29,7 @@ $('.waifu-tool .info-circle').click(function(){
 });
 $('.waifu-tool .camera').click(function(){
     showMessage('照好了嘛，是不是很可爱呢？',5000);
-    window.Live2D.captureName = model_p+'.png';
+    window.Live2D.captureName = 'photo.png';
     window.Live2D.captureFrame = true
 });
 $('.waifu-tool .close').click(function(){
@@ -42,7 +42,7 @@ $('.waifu-tool .drivers-license-o').click(function(){
     if(model_p===22){
         loadlive2d('live2d',$(".l2d_xb").attr("data-api")+'/model/api.php?p=22&id='+m22_id);
         model_p = 33;
-        showMessage('33援交有点累了，现在该我上场了',4000)
+        showMessage('33有点累了，现在该我上场了',4000)
     }else{
         loadlive2d('live2d',$(".l2d_xb").attr("data-api")+'/model/api.php?p=33&id='+m33_id);
         model_p = 22;
@@ -123,22 +123,22 @@ function showMessage(a,b){
         }
     }
     //目标位置，默认左下角
-    $(".waifu").animate({top:$(window).height()-250,left:0},800);
+    $(".waifu").animate({top:$(window).height()-320,left:80},800);
     showMessage(text,8000)
 })();
 $("#live2d").mouseover(function(){
-    msgs = ["你要干嘛呀？","鼠…鼠标放错地方了！","喵喵喵？","萝莉控是什么呀？","怕怕","你看到我的小熊了吗"];
+    msgs = ["你要干嘛呀？","鼠…鼠标放错地方了！","喵喵喵？","怕怕","你看到我的小熊了吗"];
     var i = Math.floor(Math.random()*msgs.length);
     showMessage(msgs[i])
 });
 jQuery(document).ready(function($){
-    $('.search-box').mouseover(function(){
+    $('#navbar_search_input_container').mouseover(function(){
         showMessage('找不到想要的？试试搜索吧！')
     });
-    $('#search').focus(function(){
+    $('#navbar_search_input,#leftbar_search_input,#navbar_search_input_mobile').focus(function(){
         showMessage('输入你想搜索的关键词再按Enter键就可以搜索啦!')
     });
-    $('.desc a h2,.desc a span,.color-logo a,.back-index,.waifu-tool .home,#kratos-primary-menu .fa-home').mouseover(function(){
+    $('a.navbar-brand.navbar-title,.desc a h2,.desc a span,.color-logo a,.back-index,.waifu-tool .home,#kratos-primary-menu .fa-home').mouseover(function(){
         showMessage('点它就可以回到首页啦！')
     });
     $('#footer p a i.fa-weibo').mouseover(function(){
@@ -159,8 +159,17 @@ jQuery(document).ready(function($){
     $('#wechat-img').mouseover(function(){
         showMessage('这是我的微信二维码~')
     });
-    $('.gotop-box').mouseover(function(){
+    $('#fabtn_back_to_top').mouseover(function(){
         showMessage('要回到开始的地方么？')
+    });
+    $('#fabtn_go_to_comment').mouseover(function(){
+        showMessage('你要说些什么？')
+    });
+    $('#fabtn_toggle_blog_settings_popup').mouseover(function(){
+        showMessage('可修改博客的样子呢！')
+    });
+    $('#fabtn_reading_progress').mouseover(function(){
+	    showMessage('告诉我你阅读了多少了！')
     });
     $('.waifu-tool .comments').mouseover(function(){
         showMessage('猜猜我要说些什么？')
@@ -184,11 +193,17 @@ jQuery(document).ready(function($){
     $('.waifu-tool .close').mouseover(function(){
         showMessage('到了要说再见的时候了吗')
     });
-    $(document).on("click","h2 a",function(){
+    $(document).on("click","a.post-title,.nav-item a,#leftbar_part1 a",function(){
         showMessage('加载<span style="color:#0099cc;">'+$(this).text()+'</span>中...请稍候',600)
     });
-    $(document).on("mouseover","h2 a",function(){
+    $(document).on("mouseover","a.post-title,.nav-item a,#leftbar_part1 a",function(){
         showMessage('要看看<span style="color:#0099cc;">'+$(this).text()+'</span>么？')
+    });
+    $(document).on("mouseover",".site-author-links a",function(){
+        showMessage('要前往<span style="color:#0099cc;">'+$(this).text()+'</span>，看看我的站外空间吗？')
+    });
+    $(document).on("mouseover",".reference-list-container a",function(){
+        showMessage('要前往本文参考<span style="color:#0099cc;">'+$(this).text()+'</span>看看吗？')
     });
     $(document).on("mouseover",".prev",function(){
         showMessage('要翻到上一页吗?')
@@ -196,13 +211,13 @@ jQuery(document).ready(function($){
     $(document).on("mouseover",".next",function(){
         showMessage('要翻到下一页吗?')
     });
-    $(document).on("mouseover",".kratos-post-content a",function(){
-        showMessage('去 <span style="color:#0099cc;">'+$(this).text()+'</span> 逛逛吧')
+    $(document).on("mouseover",".post-content a,.shuoshuo-content a",function(){
+        showMessage('要前往 <span style="color:#0099cc;">'+$(this).text()+'</span> 吗？')
     });
-    $(document).on("mouseover","#submit",function(){
-        showMessage('呐 首次评论需要审核，请耐心等待哦~')
+    $(document).on("mouseover","#post_comment_send",function(){
+        showMessage('呐 评论需要审核，请耐心等待哦~')
     });
-    $(document).on("mouseover",".OwO-logo",function(){
+    $(document).on("mouseover","#comment_emotion_btn",function(){
         showMessage('要来一发表情吗？')
     });
     $(document).on("mouseover",".nav-previous",function(){
@@ -211,32 +226,38 @@ jQuery(document).ready(function($){
     $(document).on("mouseover",".nav-next",function(){
         showMessage('点它可以前进哦！')
     });
-    $(document).on("mouseover",".comment-reply-link",function(){
-        showMessage('要说点什么吗')
+    $(document).on("mouseover",".comment-reply",function(){
+        showMessage('要对ta说点什么吗')
     });
-    $(document).on("mouseover",".Donate",function(){
+    $(document).on("mouseover",".btn.donate-btn.btn-danger",function(){
         showMessage('要打赏我嘛？好期待啊~')
     });
-    $(document).on("mouseover",".Love",function(){
+    $(document).on("mouseover",".shuoshuo-upvote",function(){
         showMessage('我是不是棒棒哒~快给我点赞吧！')
     });
     $(document).on("mouseover",".must-log-in",function(){
         showMessage('登录才可以继续哦~')
     });
-    $(document).on("mouseover",".Share",function(){
+    $(document).on("mouseover","#share_show",function(){
         showMessage('好东西要让更多人知道才行哦')
     });
-    $(document).on("click","#author",function(){
+    $(document).on("click","#post_comment_name",function(){
         showMessage("留下你的尊姓大名！")
     });
-    $(document).on("click","#email",function(){
-        showMessage("留下你的邮箱，不然就是无头像人士了！")
+    $(document).on("click","#post_comment_email",function(){
+        showMessage("留下你的QQ或邮箱，不然就是无头像人士了！")
     });
-    $(document).on("click","#url",function(){
+    $(document).on("click","#post_comment_link",function(){
         showMessage("快快告诉我你的家在哪里，好让我去参观参观！")
     });
-    $(document).on("click","#comment",function(){
-        showMessage("一定要认真填写喵~")
+    $(document).on("click","#post_comment_content",function(){
+        showMessage('一定要遵守<a href="/comment-rules">评论规则</a>，认真填写喵~')
+    });
+    $(document).on("click","#post_comment_captcha",function(){
+        showMessage("填写验证码来确认你不是机器人嘛！")
+    });
+    $(document).on("mouseover",".aplayer.aplayer-fixed .aplayer-body,.aplayer.aplayer-fixed .aplayer-list",function(){
+        showMessage('欢迎听歌<br>提示:如果我挡住操作了，尝试移动一下我吧！')
     });
 });
 jQuery(document).ready(function($){
@@ -249,7 +270,7 @@ jQuery(document).ready(function($){
                 msgs = ["你有完没完呀？","你已经摸我"+stat_click+"次了","非礼呀！救命！","OH，My ladygaga","110吗，这里有个变态一直在摸我(ó﹏ò｡)"];
                 var i = Math.floor(Math.random()*msgs.length)
             }else{
-                msgs = ["是…是不小心碰到了吧","我跑呀跑呀跑！~~","再摸的话我可要报警了！⌇●﹏●⌇","别摸我，有什么好摸的！","惹不起你，我还躲不起你么？","不要摸我了，我会告诉老婆来打你的！","干嘛动我呀！小心我咬你！"];
+                msgs = ["是…是不小心碰到了吧","我跑呀跑呀跑！~~","再摸的话我可要报警了！⌇●﹏●⌇","别摸我，有什么好摸的！","惹不起你，我还躲不起你么？","不要摸我了，我会告诉你老婆来打你的！","干嘛动我呀！小心我咬你！"];
                 var i = Math.floor(Math.random()*msgs.length)
             }
         s = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.75,-0.1,-0.2,-0.3,-0.4,-0.5,-0.6,-0.7,-0.75];
