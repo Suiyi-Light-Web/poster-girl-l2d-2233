@@ -16,7 +16,7 @@ function l2d_main(){
     wp_enqueue_style('waifu',l2d_URL.'/css/waifu.min.css',array(),'1.9');
     //引入 JQuery，如果你的主题不自带（大多数 WP 主题都有），请移除下面一行的注释。
     //wp_enqueue_script('waifu-jq','https://cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js',array(),'2.1.4');
-    wp_enqueue_script('waifu-l2d','https://cdn.jsdelivr.net/gh/xb2016/kratos-pjax@0.3.6/static/js/live2d.js',array(),'l2d');
+    wp_enqueue_script('waifu-l2d',l2d_URL.'/js/live2d.js',array(),'l2d');
     wp_enqueue_script('waifu',l2d_URL.'/js/waifu-tips.js',array(),'1.9'); ?>
     <div class="l2d_xb" data-api="<?php echo l2d_URL; ?>">
         <div class="waifu">
