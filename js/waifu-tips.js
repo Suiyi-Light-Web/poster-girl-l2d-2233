@@ -25,7 +25,7 @@ $('.waifu-tool .comments').click(function(){
     showHitokoto()
 });
 $('.waifu-tool .info-circle').click(function(){
-    window.open('https://moedog.org/946.html')
+    window.open('https://github.com/Suiyi-Light-Web/poster-girl-l2d-2233-Argon')
 });
 $('.waifu-tool .camera').click(function(){
     showMessage('照好了嘛，是不是很可爱呢？',5000);
