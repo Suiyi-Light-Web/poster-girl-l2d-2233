@@ -4,7 +4,7 @@ Plugin Name: live2d看板娘(2233)
 Plugin URI: https://github.com/xb2016/poster-girl-l2d-2233
 Description: 2233 娘的 live2d 看板娘插件(WordPress)，支持换人换装！为了用户体验，不再支持移动端加载。插件需要 JQuery 支持，如果你的主题没有，请编辑插件 index.php。自定义修改请编辑 waifu-tips.js。
 Author: 小白-白
-Version: 1.8
+Version: 1.9
 Author URI: https://moedog.org
 */
 
@@ -13,11 +13,11 @@ define('l2d_URL',plugins_url('', __FILE__));
 //MAIN
 if(!wp_is_mobile()) add_action('wp_footer','l2d_main');
 function l2d_main(){
-    wp_enqueue_style('waifu',l2d_URL.'/css/waifu.min.css',array(),'1.7');
+    wp_enqueue_style('waifu',l2d_URL.'/css/waifu.min.css',array(),'1.9');
     //引入 JQuery，如果你的主题不自带（大多数 WP 主题都有），请移除下面一行的注释。
     //wp_enqueue_script('waifu-jq','https://cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js',array(),'2.1.4');
     wp_enqueue_script('waifu-l2d','https://cdn.jsdelivr.net/gh/xb2016/kratos-pjax@0.3.6/static/js/live2d.js',array(),'l2d');
-    wp_enqueue_script('waifu',l2d_URL.'/js/waifu-tips.js',array(),'1.7'); ?>
+    wp_enqueue_script('waifu',l2d_URL.'/js/waifu-tips.js',array(),'1.9'); ?>
     <div class="l2d_xb" data-api="<?php echo l2d_URL; ?>">
         <div class="waifu">
             <div class="waifu-tips"></div>
