@@ -1,5 +1,5 @@
 //初始位置，默认左上角，与下面的 目标位置 搭配修改
-$(".waifu").css({'top':0,'left':30});
+$(".waifu").css({'top':0,'right':30});
 
 let waifu_display = localStorage.getItem('waifu-display');
 if(waifu_display=="none"){
@@ -122,8 +122,8 @@ function showMessage(a,b){
             text = '欢迎阅读<span style="color:#0099cc;">『'+document.title.split(' - ')[0]+'』</span>'
         }
     }
-    //目标位置，默认左下角
-    $(".waifu").animate({top:$(window).height()-320,left:80},800);
+    //目标位置，默认右下角
+    $(".waifu").animate({top:$(window).height()-250,right:80},800);
     showMessage(text,8000)
 })();
 $("#live2d").mouseover(function(){
@@ -256,8 +256,8 @@ jQuery(document).ready(function($){
     $(document).on("click","#post_comment_captcha",function(){
         showMessage("填写验证码来确认你不是机器人嘛！")
     });
-    $(document).on("mouseover",".aplayer.aplayer-fixed .aplayer-body,.aplayer.aplayer-fixed .aplayer-list",function(){
-        showMessage('欢迎听歌<br>提示:如果我挡住操作了，尝试移动一下我吧！')
+    $(document).on("mouseover",".aplayer.aplayer-fixed .aplayer-body",function(){
+        showMessage('来欣赏我推荐的音乐吧！')
     });
 });
 jQuery(document).ready(function($){
