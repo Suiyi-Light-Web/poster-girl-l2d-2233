@@ -1,4 +1,4 @@
-//初始位置，默认左上角，与下面的 目标位置 搭配修改
+//初始位置，默认右上角，与下面的 目标位置 搭配修改
 $(".waifu").css({'top':0,'right':30});
 
 let waifu_display = localStorage.getItem('waifu-display');
