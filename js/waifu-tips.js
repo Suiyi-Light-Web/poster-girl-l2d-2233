@@ -1,5 +1,5 @@
-//初始位置，默认右上角，与下面的 目标位置 搭配修改
-$(".waifu").css({'top':0,'right':30});
+//初始位置，默认左上角，与下面的 目标位置 搭配修改
+$(".waifu").css({'top':0,'left':0});
 
 let waifu_display = localStorage.getItem('waifu-display');
 if(waifu_display=="none"){
@@ -122,8 +122,8 @@ function showMessage(a,b){
             text = '欢迎阅读<span style="color:#0099cc;">『'+document.title.split(' - ')[0]+'』</span>'
         }
     }
-    //目标位置，默认右下角
-    $(".waifu").animate({top:$(window).height()-250,right:80},800);
+    //目标位置，默认左下角
+    $(".waifu").animate({top:$(window).height()-250,left:0},800);
     showMessage(text,8000)
 })();
 $("#live2d").mouseover(function(){
